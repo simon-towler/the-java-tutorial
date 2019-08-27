@@ -32,10 +32,10 @@
 public class ImmutableRGB {
 
     // Values must be between 0 and 255.
-    private int red;
-    private int green;
-    private int blue;
-    private String name;
+    final private int red;
+    final private int green;
+    final private int blue;
+    final private String name;
 
     private void check(int red,
                        int green,
@@ -57,7 +57,7 @@ public class ImmutableRGB {
         this.blue = blue;
         this.name = name;
     }
-    
+
     }
 
     public synchronized int getRGB() {
