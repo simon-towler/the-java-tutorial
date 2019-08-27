@@ -29,7 +29,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-public class ImmutableRGB {
+final public class ImmutableRGB {
 
     // Values must be between 0 and 255.
     final private int red;
