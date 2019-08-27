@@ -57,18 +57,7 @@ public class ImmutableRGB {
         this.blue = blue;
         this.name = name;
     }
-
-    public void set(int red,
-                    int green,
-                    int blue,
-                    String name) {
-        check(red, green, blue);
-        synchronized (this) {
-            this.red = red;
-            this.green = green;
-            this.blue = blue;
-            this.name = name;
-        }
+    
     }
 
     public synchronized int getRGB() {
