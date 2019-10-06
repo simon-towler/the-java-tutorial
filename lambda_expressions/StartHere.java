@@ -8,7 +8,16 @@ public class StartHere {
 
         List<Person> roster = Person.createRoster();
         //printPersonsWithinAgeRange(roster, 20, 60);
-        printPersons(roster, new CheckPersonElligibleForSelectiveService());
+        //printPersons(roster, new CheckPersonElligibleForSelectiveService());
+
+        //approach 4: Specify search criteria code in an anonymous class
+        printPersons(roster, new CheckPerson() {
+            public boolean test (Person p) {
+                return p.getGender() == Person.Sex.MALE
+                        && p.getAge() >= 18
+                        && p.getAge() <= 25;
+            }
+        });
 
     System.out.println("Done!");
     }
@@ -30,8 +39,12 @@ public class StartHere {
             }
         }
     }
+    
+    interface CheckPerson {
+        boolean test(Person p);
+    }
 
-    static class CheckPersonElligibleForSelectiveService {
+    static class CheckPersonElligibleForSelectiveService implements CheckPerson {
         public boolean test (Person p) {
             return p.gender == Person.Sex.MALE &&
                     p.getAge() >= 18 &&
@@ -39,13 +52,13 @@ public class StartHere {
         }
     }
 
-    //approach 3: Specify search criteria code in a local class
-    public static void printPersons(List<Person> roster, CheckPersonElligibleForSelectiveService tester) {
+    public static void printPersons(List<Person> roster, CheckPerson tester) {
         for (Person p : roster) {
             if (tester.test(p)) {
                 p.printPerson();
             }
         }
     }
+
 
 }
