@@ -3,6 +3,19 @@ import java.util.List;
 
 public class StartHere {
 
+    interface CheckPerson {
+        boolean test(Person p);
+    }
+
+    /*
+    //since Approach 4 you don't have to create a new class for each type of search you want to perform
+    static class CheckPersonElligibleForSelectiveService implements CheckPerson {
+        public boolean test (Person p) {
+            return p.gender == Person.Sex.MALE &&
+                    p.getAge() >= 18 &&
+                    p.getAge() <= 25;
+        }
+    }*/
 
     public static void main(String[] args){
 
@@ -11,6 +24,7 @@ public class StartHere {
         //printPersons(roster, new CheckPersonElligibleForSelectiveService());
 
         //approach 4: Specify search criteria code in an anonymous class
+        //the syntax of the anonymous class is relatively bulky
         printPersons(roster, new CheckPerson() {
             public boolean test (Person p) {
                 return p.getGender() == Person.Sex.MALE
@@ -39,18 +53,7 @@ public class StartHere {
             }
         }
     }
-    
-    interface CheckPerson {
-        boolean test(Person p);
-    }
 
-    static class CheckPersonElligibleForSelectiveService implements CheckPerson {
-        public boolean test (Person p) {
-            return p.gender == Person.Sex.MALE &&
-                    p.getAge() >= 18 &&
-                    p.getAge() <= 25;
-        }
-    }
 
     public static void printPersons(List<Person> roster, CheckPerson tester) {
         for (Person p : roster) {
