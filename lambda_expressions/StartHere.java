@@ -3,6 +3,7 @@ import java.util.List;
 
 public class StartHere {
 
+    //functional interface
     interface CheckPerson {
         boolean test(Person p);
     }
@@ -23,7 +24,7 @@ public class StartHere {
         //printPersonsWithinAgeRange(roster, 20, 60);
         //printPersons(roster, new CheckPersonElligibleForSelectiveService());
 
-        //approach 4: Specify search criteria code in an anonymous class
+/*        //approach 4: Specify search criteria code in an anonymous class
         //the syntax of the anonymous class is relatively bulky
         printPersons(roster, new CheckPerson() {
             public boolean test (Person p) {
@@ -31,9 +32,19 @@ public class StartHere {
                         && p.getAge() >= 18
                         && p.getAge() <= 25;
             }
-        });
+        });*/
 
-    System.out.println("Done!");
+    //approach 5: Specify search criteria code with a Lambda expression
+        printPersons(
+                roster,
+                //the type of this arg is fi CheckPerson, so this le must be an implementation of .test
+                //the args to the le must match the args to the only abstract method of .test
+                p -> p.getGender() == Person.Sex.MALE
+                    && p.getAge() >= 18
+                    && p.getAge() <= 25
+        );
+
+    System.out.println("Approach 5 done!");
     }
 
     //approach 1
