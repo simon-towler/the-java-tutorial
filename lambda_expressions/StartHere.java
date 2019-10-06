@@ -6,8 +6,8 @@ public class StartHere {
 
     public static void main(String[] args){
 
-        List roster = Person.createRoster();
-        printPersonsOlderThan(roster, 30);
+        List<Person> roster = Person.createRoster();
+        printPersonsWithinAgeRange(roster, 20, 60);
 
     System.out.println("Done!");
     }
@@ -20,4 +20,14 @@ public class StartHere {
             }
         }
     }
+
+    //approach 2: Create more generalized search methods
+    public static void printPersonsWithinAgeRange(List<Person> roster, int low, int high) {
+        for (Person p : roster) {
+            if (low <= p.getAge() && p.getAge() < high) {
+                p.printPerson();
+            }
+        }
+    }
+
 }
