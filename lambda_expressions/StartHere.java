@@ -1,12 +1,13 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 
 public class StartHere {
 
-    //functional interface
+/*    //functional interface
     interface CheckPerson {
         boolean test(Person p);
-    }
+    }*/
 
     /*
     //since Approach 4 you don't have to create a new class for each type of search you want to perform
@@ -34,7 +35,7 @@ public class StartHere {
             }
         });*/
 
-    //approach 5: Specify search criteria code with a Lambda expression
+/*    //approach 5: Specify search criteria code with a Lambda expression
         printPersons(
                 roster,
                 //the type of this arg is fi CheckPerson, so this le must be an implementation of .test
@@ -42,9 +43,17 @@ public class StartHere {
                 p -> p.getGender() == Person.Sex.MALE
                     && p.getAge() >= 18
                     && p.getAge() <= 25
+        );*/
+
+        //approach 6: Use standard functional interfaces with lambda expressions
+        printPersonsWithPredicate(
+                roster,
+                p -> p.getGender() == Person.Sex.MALE
+                        && p.getAge() >= 18
+                        && p.getAge() <= 25
         );
 
-    System.out.println("Approach 5 done!");
+    System.out.println("Approach 6 done!");
     }
 
     //approach 1
@@ -66,13 +75,21 @@ public class StartHere {
     }
 
 
-    public static void printPersons(List<Person> roster, CheckPerson tester) {
+/*    public static void printPersons(List<Person> roster, CheckPerson tester) {
+        for (Person p : roster) {
+            if (tester.test(p)) {
+                p.printPerson();
+            }
+        }
+    }*/
+
+    //approach 6
+    public static void printPersonsWithPredicate(List<Person> roster, Predicate<Person> tester) {
         for (Person p : roster) {
             if (tester.test(p)) {
                 p.printPerson();
             }
         }
     }
-
 
 }
