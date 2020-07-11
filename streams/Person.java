@@ -23,7 +23,34 @@ public class Person {
         // ...
     }
 
+    public String getName() {
+        return this.name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public static List<Person> createRoster() {
-        return new ArrayList<Person>();
+
+        List<Person> roster = new ArrayList<Person>();
+
+        Person nextPerson = new Person();
+        nextPerson.setName("Che Guevara");
+        roster.add(nextPerson);
+
+        nextPerson = new Person();
+        nextPerson.setName("Jean Paul Sartre");
+        roster.add(nextPerson);
+
+        nextPerson = new Person();
+        nextPerson.setName("Simone De Beauvoir");
+        roster.add(nextPerson);
+
+        nextPerson = new Person();
+        nextPerson.setName("Susan Sontag");
+        roster.add(nextPerson);
+
+        return roster;
     }
 }
