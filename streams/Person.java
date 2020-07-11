@@ -13,11 +13,7 @@ public class Person {
     LocalDate birthday;
     Sex gender;
     String emailAddress;
-
-    public int getAge() {
-        // ...
-        return 0;
-    }
+    int age;
 
     public void printPerson() {
         // ...
@@ -39,6 +35,14 @@ public class Person {
         return this.gender;
     }
 
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public int getAge() {
+        return this.age;
+    }
+
     public static List<Person> createRoster() {
 
         List<Person> roster = new ArrayList<Person>();
@@ -46,11 +50,13 @@ public class Person {
         Person nextPerson = new Person();
         nextPerson.setName("Che Guevara");
         nextPerson.setGender(Person.Sex.MALE);
+        nextPerson.setAge(39);
         roster.add(nextPerson);
 
         nextPerson = new Person();
         nextPerson.setName("Jean Paul Sartre");
         nextPerson.setGender(Person.Sex.MALE);
+        nextPerson.setAge(74);
         roster.add(nextPerson);
 
         nextPerson = new Person();
