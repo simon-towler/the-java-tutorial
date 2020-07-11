@@ -6,11 +6,20 @@ public class BulkDataOperationsExamples {
 
         //Create sample data
         List<Person> roster = Person.createRoster();
-
+        printDivider();
         // 1. Print names of members, for-each loop
         System.out.println("Members of the collection (for-each loop):");
         for (Person p : roster) {
             System.out.println(p.getName());
         }
+        printDivider();
+        // 2. Print names of members, forEach operation
+        System.out.println("Members of the collection (bulk data operations):");
+        roster.stream()
+                .forEach(e -> System.out.println(e.getName()));
+    }
+
+    private static void printDivider() {
+        System.out.println("==========================================================================");
     }
 }
