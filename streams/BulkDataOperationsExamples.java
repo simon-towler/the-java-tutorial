@@ -17,6 +17,13 @@ public class BulkDataOperationsExamples {
         System.out.println("Members of the collection (bulk data operations):");
         roster.stream()
                 .forEach(e -> System.out.println(e.getName()));
+
+        // 3. Print names of male members, forEach operation
+        printDivider();
+        System.out.println("Male members of the collection (bulk data operations):");
+        roster.stream()
+                .filter(e -> e.getGender() == Person.Sex.MALE)
+                .forEach(e -> System.out.println(e.getName()));
     }
 
     private static void printDivider() {
