@@ -26,10 +26,20 @@ public class ReductionExamples {
                 // A: if we just call .map we get a Stream<Integer>, a boxed val. .mapToInt returns an IntStream
                 .mapToInt(Person::getAge)
                 // IntStream has the .average method. Stream<Integer> (or Stream<?>) does not.
-                .average()
+                .average() // IntStream.average returns an OptionalDouble
+                // this is a method of the OptionalDouble class
                 .getAsDouble();
 
         System.out.println("Average age at death of female members (bulk data operations): " + average);
+        System.out.println("==========================================================================");
+
+        // 2. Sum of ages with sum operation
+        Integer totalAge = roster
+                .stream()
+                .mapToInt(Person::getAge)
+                .sum();
+
+        System.out.println("Sum of ages (sum operation): " + totalAge);
         System.out.println("==========================================================================");
 
 
