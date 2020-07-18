@@ -50,6 +50,15 @@ public class ReductionExamples {
 
         System.out.println("Sum of ages with reduce(identity, accumulator): " + totalAgeReduce);
         System.out.println("==========================================================================");
+
+        // 4. Average of female members with collect operation
+        Averager averageCollect = roster.stream()
+                .filter(p -> p.getGender() == Person.Sex.FEMALE)
+                .map(Person::getAge)
+                .collect(Averager::new, Averager::accept, Averager::combine);
+
+        System.out.println("Average age of female members (with collect operation): " + averageCollect.average());
+        System.out.println("==========================================================================");
     }
 
 }
