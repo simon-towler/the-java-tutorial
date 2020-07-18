@@ -34,7 +34,7 @@ public class BulkDataOperationsExamples {
             }
         }
 
-        // 5. Get average age of male members of the collection:
+    // 5. Get average age of male members of the collection:
         double average = roster
                 .stream()
                 .filter(p -> p.getGender() == Person.Sex.MALE)
