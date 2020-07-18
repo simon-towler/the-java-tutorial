@@ -1,4 +1,5 @@
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ReductionExamples {
 
@@ -59,6 +60,26 @@ public class ReductionExamples {
 
         System.out.println("Average age of female members (with collect operation): " + averageCollect.average());
         System.out.println("==========================================================================");
+
+        // 5. Names of female members with collect operation
+        System.out.println("Names of female members with collect operation: ");
+        System.out.println("--------------------------------------------------------------------------");
+
+        List<String> namesOfFemaleMembersCollect = roster
+                .stream()
+                .filter(p -> p.getGender() == Person.Sex.FEMALE)
+                .map(p -> p.getName())
+                // collects the stream elements into a collection of type List, and returns the List
+                .collect(Collectors.toList());
+
+        // the stream pipeline of namesOfFemaleMembersCollect above will not run till this is called, I think?
+        namesOfFemaleMembersCollect
+                .stream()
+                .forEach(p -> System.out.println(p));
+
+        System.out.println("==========================================================================");
+
+
     }
 
 }
