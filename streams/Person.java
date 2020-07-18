@@ -62,11 +62,31 @@ public class Person {
         nextPerson = new Person();
         nextPerson.setName("Simone De Beauvoir");
         nextPerson.setGender(Person.Sex.FEMALE);
+        nextPerson.setAge(78);
         roster.add(nextPerson);
 
         nextPerson = new Person();
         nextPerson.setName("Susan Sontag");
         nextPerson.setGender(Person.Sex.FEMALE);
+        nextPerson.setAge(71);
+        roster.add(nextPerson);
+
+        nextPerson = new Person();
+        nextPerson.setName("Nina Simone");
+        nextPerson.setGender(Person.Sex.FEMALE);
+        nextPerson.setAge(70);
+        roster.add(nextPerson);
+
+        nextPerson = new Person();
+        nextPerson.setName("Frida Kahlo");
+        nextPerson.setGender(Person.Sex.FEMALE);
+        nextPerson.setAge(47);
+        roster.add(nextPerson);
+
+        nextPerson = new Person();
+        nextPerson.setName("Charles Mingus");
+        nextPerson.setGender(Person.Sex.MALE);
+        nextPerson.setAge(56);
         roster.add(nextPerson);
 
         return roster;
