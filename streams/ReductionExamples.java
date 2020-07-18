@@ -42,7 +42,14 @@ public class ReductionExamples {
         System.out.println("Sum of ages (sum operation): " + totalAge);
         System.out.println("==========================================================================");
 
+        // 3. Sum of ages with reduce(identity, accumulator)
+        Integer totalAgeReduce = roster
+                .stream()
+                .map(Person::getAge)
+                .reduce(0, (a,b) -> a+b);
 
+        System.out.println("Sum of ages with reduce(identity, accumulator): " + totalAgeReduce);
+        System.out.println("==========================================================================");
     }
 
 }
