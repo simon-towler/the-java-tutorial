@@ -1,4 +1,6 @@
 import java.util.List;
+import java.util.Map;
+import java.util.ArrayList;
 import java.util.stream.Collectors;
 
 public class ReductionExamples {
@@ -79,6 +81,37 @@ public class ReductionExamples {
 
         System.out.println("==========================================================================");
 
+        // 6. Group members by gender
+
+        /*
+           Note that with streams, since they are evaluated lazily, errors in earlier lines of code
+           will not be alerted by the compiler till after errors in later lines -- the reverse of
+           the usual order.
+         */
+
+        System.out.println("Members by gender: ");
+        Map<Person.Sex, List<Person>> byGender =
+                roster
+                .stream()
+                .collect(Collectors.groupingBy(Person::getGender));
+
+        // declare a List of Map entries, whose K/Vs are Person.Sex/List<Person>
+        List<Map.Entry<Person.Sex,List<Person>>> byGenderList =
+                new ArrayList<>(byGender.entrySet());
+
+        // now stream it to print out the members grouped by gender
+        byGenderList // will have only two keys, FEMALE and MALE
+                .stream()
+                .forEach(e -> {
+                    System.out.println();
+                    System.out.println("Gender: " + e.getKey());
+                    System.out.println("--------------------------------------------------------------------------");
+                    e.getValue() // a List<Person>
+                            .stream()
+                            .map(Person::getName)
+                            .forEach(f -> System.out.println(f));});
+
+        System.out.println("==========================================================================");
 
     }
 
