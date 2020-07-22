@@ -113,6 +113,64 @@ public class ReductionExamples {
 
         System.out.println("==========================================================================");
 
+        // 7. Group names by gender
+        System.out.println("Names by gender: ");
+
+        Map<Person.Sex, List<String>> namesByGender =
+                roster.stream()
+                .collect(
+                        Collectors.groupingBy(
+                                Person::getGender,
+                                /* what's this bit doing?
+                                    It's doing a downstream collection into a List
+                                    of only the _names_ of the grouped Persons
+                                    for each of the two groups, MALE and FEMALE
+                                 */
+                                Collectors.mapping(
+                                        Person::getName,
+                                        Collectors.toList())));
+
+        /* Now we want to print the names by gender to demonstrate we got them.
+            To do this, we'll use a map entry for FEMALE and a map entry for MALE
+            each having a value that is a list of names of Persons of that sex.
+         */
+        // But why use a new List? Why not just print from the Map directly?
+        List<Map.Entry<Person.Sex, List<String>>> namesByGenderList =
+                new ArrayList<>(namesByGender.entrySet());
+
+        namesByGenderList
+                .stream()
+                .forEach(e -> {
+                    System.out.println();
+                    System.out.println("Gender: " + e.getKey());
+                    System.out.println("--------------------------------------------------------------------------");
+                    e.getValue()
+                            .stream()
+                            .forEach(f -> System.out.println(f));
+                });
+
+        System.out.println("==========================================================================");
+
+        // 8. Total age by gender
+        System.out.println("Total age by gender: ");
+        Map<Person.Sex, Integer> totalAgeByGender =
+                roster
+                    .stream()
+                    .collect(
+                            Collectors.groupingBy(
+                                    Person::getGender,
+                                    Collectors.reducing(
+                                            0,
+                                            Person::getAge,
+                                            Integer::sum)));
+
+        List<Map.Entry<Person.Sex, Integer>> totalAgeByGenderList =
+                new ArrayList<>(totalAgeByGender.entrySet());
+
+        totalAgeByGenderList
+                .stream()
+                .forEach(e -> System.out.println("Gender: " + e.getKey() +
+                        ", Total Age: " + e.getValue()));
     }
 
 }
