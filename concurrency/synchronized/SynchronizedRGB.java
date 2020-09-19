@@ -2,7 +2,7 @@
 /*
    Represents an 8 bit RBB colour
 */
-public class synchronizedRBB {
+public class SynchronizedRGB {
    // declare variables to hold the R, G and B values
    private int red;
    private int green;
@@ -12,7 +12,7 @@ public class synchronizedRBB {
    private String name;
 
    /*
-    a private method to validate input values
+    * a private method to validate input values
     * to the constructor and setter methods
     */
     private void check(int red, int green, int blue) {
@@ -25,7 +25,6 @@ public class synchronizedRBB {
            // classic response to an invalid input parameter
            throw new IllegalArgumentException();
          }
-      )
     }
 
     /*
@@ -45,4 +44,28 @@ public class synchronizedRBB {
        this.name = name;
      }
 
+     /*
+      * SYNCHRONIZED METHODS START HERE
+      * Accessors and mutators.
+      */
+
+      /*
+       * Gets this colour as a sigle 3-byte 8-bit RGB value
+       * compatible with BufferedImage.
+       * Uses clever bitwise operations to derive it.
+       */
+      public synchronized int getRGB() {
+        return ( (red << 16) | (green << 8) | blue);
+      }
+
+      public synchronized String getName() {
+        return name;
+      }
+
+      public synchronized void invert() {
+        red = 255 - red;
+        green = 255 - green;
+        blue = 255 - blue;
+        name = "Inverse of " + name;
+      }
 }
