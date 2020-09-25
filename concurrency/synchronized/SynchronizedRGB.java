@@ -50,7 +50,7 @@ public class SynchronizedRGB {
       */
 
       /*
-       * Gets this colour as a sigle 3-byte 8-bit RGB value
+       * Gets this colour as a single 3-byte 8-bit RGB value
        * compatible with BufferedImage.
        * Uses clever bitwise operations to derive it.
        */
@@ -68,4 +68,16 @@ public class SynchronizedRGB {
         blue = 255 - blue;
         name = "Inverse of " + name;
       }
+
+      public void setColour(int red, int green, int blue, String name) {
+        // check validity of the rgb input parameters
+        check(red, green, blue);
+
+        // assign input to instance variables
+        this.red = red;
+        this.green = green;
+        this.blue = blue;
+        this.name = name;
+      }
+
 }
