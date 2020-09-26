@@ -14,7 +14,7 @@ public class SynchronizedTest2 {
         colour.setColour(000, 000, 000, "Bright White");
         colour.setColour(128, 128, 128, "Mid Grey");
         count++;
-        Thread.yield();
+        Thread.yield(); // use yield only for debug or test
       }
     }
 
@@ -38,7 +38,7 @@ public class SynchronizedTest2 {
      String myColourName = colour.getName();
      System.out.println(myColourName + ": " + myColourInt);
      count++;
-     Thread.yield();
+     Thread.yield(); // use yield only for debug or test
    }
   }
 
