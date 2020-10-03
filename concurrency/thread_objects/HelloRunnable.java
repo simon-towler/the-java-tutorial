@@ -9,7 +9,7 @@ Runnable object to the Thread.
 public final class HelloRunnable implements Runnable {
 
   public void run() {
-    System.out.println("Hello from a thread!");
+    System.out.println("Hello from a thread passed a runnable!");
   }
 
   public static void main(String args[]) {

@@ -27,9 +27,10 @@ public class SynchronizedTest2 {
   // the task of the main thread
 
    /*
-   If another thread invokes color.setColour after statement 1 but before statement 2,
-   the value of myColourInt won't match the value of myColourName. To avoid that
-   the two statements would have to be 'bound together' in some way.
+   If another thread invokes color.setColour after statement 1 but before
+   statement 2, the value of myColourInt won't match the value of myColourName.
+   To avoid that the two statements would have to be 'bound together' in some
+   way.
    */
    while(count < 500) {
      // statement 1
@@ -48,11 +49,11 @@ Pitch Black: 0
 Mid Grey: 8421504
 Mid Grey: 8421504
 Mid Grey: 8421504
-Bright White: 8421504
+Bright White: 8421504 //erroneous
 Mid Grey: 8421504
 Mid Grey: 8421504
 Mid Grey: 8421504
-Bright White: 8421504
+Bright White: 8421504  //erroneous
 Mid Grey: 8421504
 Mid Grey: 8421504
 Mid Grey: 8421504
