@@ -15,8 +15,8 @@ public enum Planet {
   NEPTUNE (1.024e+26, 2.4746e7); // semicolon because class has more stuff
 
   // class constant
-  // universal gravitational constant (m3 kg-1 s-2)
-  public static final double G = 6.67300E-11;
+  // universal gravitational constant (units m3 kg-1 s-2)
+  public static final double G = 6.67400E-11;
 
   // instance variables
   private final double mass; // in kilograms
@@ -77,6 +77,7 @@ public enum Planet {
 }
 /*
 Output for an input of 175:
+
 Your weight on MERCURY is 66.107583
 Your weight on VENUS is 158.374842
 Your weight on EARTH is 175.000000
